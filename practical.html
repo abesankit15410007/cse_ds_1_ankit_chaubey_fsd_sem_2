@@ -1,0 +1,85 @@
+<!-- /prime no. checker ,create a web application that takes number from user and uses a loop to check whether number is prime or not . and show the result on webpage. use very basic of html , java  script and css// -->
+<!DOCTYPE html>
+<html lang="en"></html>        
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;    
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prime Number Checker</h1>
+        <input type="number" id="numberInput" placeholder="Enter a number">
+        <button onclick="checkPrime()">Check</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function checkPrime() {
+            const num = parseInt(document.getElementById('numberInput').value);
+            let isPrime = true;
+
+            if (num <= 1) {
+                isPrime = false; 
+            } else {
+                for (let i = 2; i <= Math.sqrt(num); i++) {
+                    if (num % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            if (isPrime) {
+                resultDiv.textContent = `${num} is a prime number.`;
+                resultDiv.style.color = 'green';
+            } else {
+                resultDiv.textContent = `${num} is not a prime number.`;
+                resultDiv.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
+
